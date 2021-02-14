@@ -1,0 +1,47 @@
+<html>
+ <head>
+  <title>Vue.js pet Depot</title>
+<script src="https://unpkg.com/vue"></script>  
+ </head>
+ <body>
+ <div id="app">
+<header>
+    <h1 v-text="sitename"></h1>
+</header>
+<main>
+    <figure>
+        <img v-bind:src="product.image">
+    </figure>
+    <h2 v-text="product.title"></h2>
+    <p v-html="product.description"></p>
+    <p>Price: {{product.price}}</p>
+    <button v-on:click="addToart">
+        Add to cart
+    </button>
+</main>
+ </div>
+
+ <script type="text/javascript">
+
+var webstore = new Vue ({ 
+    el: '#app',
+    data: {
+    sitename: 'vue.js pet Depot',
+    product: {
+        id: 1001,
+        title: "Cat Food, 25lb bag",
+        description: "A 25 pound bag of <em>irresistible </em>" + "organic goodness for your cat.",
+        price: 2000,
+        image: "kitten-eating.jpg" 
+    },
+    cart: []
+},
+methods: {
+    addToart: function () {
+        this.cart.push(this.product.id);
+    }
+}
+});
+</script>
+</body>
+</html>
